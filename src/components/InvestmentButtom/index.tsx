@@ -1,7 +1,7 @@
 import React from 'react';
 import DolarIcon from 'react-native-vector-icons/FontAwesome';
 
-import {Container, Title} from './styles';
+import {Container} from './styles';
 
 interface InvestmentButtomProps {
   size: number;

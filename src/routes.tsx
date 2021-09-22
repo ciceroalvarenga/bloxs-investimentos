@@ -8,6 +8,7 @@ import {Perfil} from './screens/Perfil';
 import {Portifolio} from './screens/Portifolio';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {InvestmentButtom} from './components/InvestmentButtom';
+import {Header} from './components/Header';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,15 +17,23 @@ export function Routes() {
     <Tab.Navigator
       screenOptions={{
         headerTransparent: true,
-        headerTitle: '',
+        headerTitleAlign: 'center',
+        headerTitleStyle: {
+          color: '#eeeeee',
+          fontSize: 20,
+        },
+        headerRight: () => (
+          <>
+            <Header />
+          </>
+        ),
         tabBarStyle: {
-          backgroundColor: '#121212',
+          backgroundColor: '#323232',
           borderTopColor: 'transparent',
           paddingBottom: 10,
           paddingTop: 15,
           height: 70,
         },
-        tabBarIconStyle: {color: '#000'},
         tabBarActiveTintColor: '#eeeeee',
         tabBarInactiveTintColor: '#8c8c8c',
       }}>
