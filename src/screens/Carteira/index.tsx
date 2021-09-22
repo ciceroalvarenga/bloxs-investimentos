@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 
 import {Container, Title} from './styles';
 
-export function Portifolio() {
+export function Carteira() {
   return (
     <Container>
       <Title>Helo Word</Title>

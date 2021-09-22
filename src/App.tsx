@@ -1,17 +1,22 @@
 import React from 'react';
-import {View} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {StatusBar, View} from 'react-native';
+import {Provider} from 'react-redux';
 import {ThemeProvider} from 'styled-components';
 
 import theme from './global/styles/theme';
+import {Routes} from './routes';
 import {Conteudos} from './screens/Conteudos';
+import store from './store/Store';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <View style={{flex: 1, backgroundColor: '#121212'}}>
-        <Conteudos />
-      </View>
-    </ThemeProvider>
+    <NavigationContainer>
+      <ThemeProvider theme={theme}>
+        <StatusBar barStyle="light-content" backgroundColor="#121212" />
+        <Routes />
+      </ThemeProvider>
+    </NavigationContainer>
   );
 }
 
