@@ -15,8 +15,12 @@ const Tab = createBottomTabNavigator();
 export function Routes() {
   return (
     <Tab.Navigator
+      initialRouteName="Conteudos"
       screenOptions={{
-        headerTransparent: true,
+        headerStyle: {
+          backgroundColor: '#121212',
+          shadowColor: 'transparent',
+        },
         headerTitleAlign: 'center',
         headerTitleStyle: {
           color: '#eeeeee',

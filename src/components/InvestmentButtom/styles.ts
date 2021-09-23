@@ -8,7 +8,7 @@ export const Container = styled.View`
   background-color: ${({theme}) => theme.colors.investimentIcon};
   align-items: center;
   justify-content: center;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 `;
 export const Title = styled.Text`
     color: ${({theme}) => theme.colors.title};
