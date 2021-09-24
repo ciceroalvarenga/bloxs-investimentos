@@ -9,6 +9,7 @@ const Stack = createNativeStackNavigator();
 export function ConteudoRoutes() {
   return (
     <Stack.Navigator
+      initialRouteName="Conteudo"
       screenOptions={{
         headerShown: false,
       }}>

@@ -1,19 +1,24 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {StatusBar, View} from 'react-native';
+import {StatusBar} from 'react-native';
 import {ThemeProvider} from 'styled-components';
 
+import {FavoriteProvider} from './hooks/useFavorite';
+
+import {Routes} from './routes/Routes';
+
 import theme from './global/styles/theme';
-import {Routes} from './routes/routes';
 
 function App() {
   return (
-    <NavigationContainer>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#121212" />
-        <Routes />
-      </ThemeProvider>
-    </NavigationContainer>
+        <FavoriteProvider>
+          <Routes />
+        </FavoriteProvider>
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 

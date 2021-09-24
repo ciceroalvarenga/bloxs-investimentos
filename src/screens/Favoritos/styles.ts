@@ -7,6 +7,6 @@ export const Container = styled.View`
   background-color:${({theme}) => theme.colors.background};
 `;
 
-export const Title = styled.Text`
-  color: ${({theme}) => theme.colors.title}
+export const ContainerCard = styled.View`
+  padding: 10px 24px;
 `;

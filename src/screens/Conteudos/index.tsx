@@ -1,17 +1,15 @@
-import {stringify} from 'qs';
 import React, {useEffect, useState} from 'react';
-import {Button, Text} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import {CardNews} from '../../components/CardNews';
 import {CategorySelect} from '../../components/CategorySelect';
 import {FooterList} from '../../components/FooterList';
-import {Header} from '../../components/Header';
 import {Shimmer} from '../../components/Shimmer';
+import {useFavorites} from '../../hooks/useFavorite';
 import {getNews} from './conteudosServices';
 
 import {Container, ContainerCard} from './styles';
 
-type PropsNews = {
+export type PropsNews = {
   id: number;
   file: string;
   title: {
@@ -33,6 +31,8 @@ export function Conteudos() {
   const [loadingShimmer, setLoadingShimmer] = useState(false);
   const [page, setPage] = useState(1);
 
+  const {favorites, addToFavorite, removeFromFavorite} = useFavorites();
+
   useEffect(() => {
     setLoadingShimmer(true);
     loadApi();
@@ -52,6 +52,15 @@ export function Conteudos() {
     setCategory(categoryId);
     setPage(1);
     setNews([]);
+  }
+
+  async function handleAddToFavorite(news: PropsNews) {
+    const newsFound = favorites.find(favorite => favorite.id === news.id);
+    if (!newsFound) {
+      await addToFavorite(news);
+    } else {
+      await removeFromFavorite(news.id);
+    }
   }
 
   return (
@@ -75,6 +84,9 @@ export function Conteudos() {
               <>
                 <CardNews
                   key={item.id}
+                  news={item}
+                  handleAddToFavorite={() => handleAddToFavorite(item)}
+                  checked={favorites.find(favorite => favorite.id === item.id)}
                   title={item.title.rendered}
                   urlImage={item._embedded['wp:featuredmedia'][0].source_url}
                 />
