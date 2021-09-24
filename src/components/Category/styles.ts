@@ -18,5 +18,4 @@ export const Container = styled.TouchableOpacity<PropsButton>`
 
 export const Title = styled.Text<PropsButton>`
     color: ${({checked,theme}) => checked ? theme.colors.background : theme.colors.iconActive};
-  
 `;

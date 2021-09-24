@@ -14,7 +14,11 @@ export function ConteudoRoutes() {
         headerShown: false,
       }}>
       <Stack.Screen name="Conteudo" component={Conteudos} />
-      <Stack.Screen name="Favoritos" component={Favoritos} />
+      <Stack.Screen
+        name="Favoritos"
+        component={Favoritos}
+        options={{headerTransparent: true}}
+      />
     </Stack.Navigator>
   );
 }

@@ -1,6 +1,7 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {FlatList, Text} from 'react-native';
 import {CardNews} from '../../components/CardNews';
+import {CategorySelect} from '../../components/CategorySelect';
 import {useFavorites} from '../../hooks/useFavorite';
 import {PropsNews} from '../Conteudos';
 
@@ -8,6 +9,7 @@ import {Container, ContainerCard} from './styles';
 
 export function Favoritos() {
   const {favorites, addToFavorite, removeFromFavorite} = useFavorites();
+  const [category, setCategory] = useState('1');
   async function handleAddToFavorite(news: PropsNews) {
     const newsFound = favorites.find(favorite => favorite.id === news.id);
     if (!newsFound) {
@@ -17,8 +19,16 @@ export function Favoritos() {
     }
   }
 
+  function handleCategorySelect(categoryId: string) {
+    setCategory(categoryId);
+  }
+
   return (
     <Container>
+      <CategorySelect
+        categorySelected={category}
+        setCategory={handleCategorySelect}
+      />
       <ContainerCard>
         <FlatList
           data={favorites}
