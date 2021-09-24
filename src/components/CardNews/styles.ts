@@ -1,12 +1,12 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color: ${({theme}) => theme.colors.secondary};
+  background-color: ${({theme}) => theme.colors.primary};
   height: 300px;
   width: 100%;
   margin-bottom: 15px;
   border-radius: 10px;
-  
+  position: relative;
 `;
 
 export const Image = styled.Image`

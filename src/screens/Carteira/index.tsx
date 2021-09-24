@@ -6,7 +6,7 @@ import {Container, Title} from './styles';
 export function Carteira() {
   return (
     <Container>
-      <Title>Helo Word</Title>
+      <Title>Em desenvolvimento</Title>
     </Container>
   );
 }

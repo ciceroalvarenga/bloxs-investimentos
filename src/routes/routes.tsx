@@ -1,14 +1,14 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {Conteudos} from './screens/Conteudos';
-import {Carteira} from './screens/Carteira';
-import {Investir} from './screens/Investir';
-import {Perfil} from './screens/Perfil';
-import {Portifolio} from './screens/Portifolio';
+import {Carteira} from '../screens/Carteira';
+import {Investir} from '../screens/Investir';
+import {Perfil} from '../screens/Perfil';
+import {Portifolio} from '../screens/Portifolio';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import {InvestmentButtom} from './components/InvestmentButtom';
-import {Header} from './components/Header';
+import {InvestmentButtom} from '../components/InvestmentButtom';
+import {Header} from '../components/Header';
+import {ConteudoRoutes} from './conteudo.routes';
 
 const Tab = createBottomTabNavigator();
 
@@ -70,7 +70,7 @@ export function Routes() {
       />
       <Tab.Screen
         name="Conteudos"
-        component={Conteudos}
+        component={ConteudoRoutes}
         options={{
           tabBarIcon: ({size, color}) => (
             <Icon name="file-document-outline" size={size} color={color} />

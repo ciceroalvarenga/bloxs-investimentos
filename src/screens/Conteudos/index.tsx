@@ -6,6 +6,7 @@ import {CardNews} from '../../components/CardNews';
 import {CategorySelect} from '../../components/CategorySelect';
 import {FooterList} from '../../components/FooterList';
 import {Header} from '../../components/Header';
+import {Shimmer} from '../../components/Shimmer';
 import {getNews} from './conteudosServices';
 
 import {Container, ContainerCard} from './styles';
@@ -29,19 +30,19 @@ export function Conteudos() {
   const [category, setCategory] = useState('1');
   const [news, setNews] = useState<PropsNews[]>([]);
   const [loading, setLoading] = useState(false);
+  const [loadingShimmer, setLoadingShimmer] = useState(false);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setPage(0);
+    setLoadingShimmer(true);
     loadApi();
-    console.log('effet');
-    console.log('page', page);
   }, [category]);
 
   async function loadApi() {
     if (loading) return;
     setLoading(true);
     const response = await getNews({page, category});
+    setLoadingShimmer(false);
     setNews([...news, ...response]);
     setPage(page + 1);
     setLoading(false);
@@ -49,6 +50,8 @@ export function Conteudos() {
 
   function handleCategorySelect(categoryId: string) {
     setCategory(categoryId);
+    setPage(1);
+    setNews([]);
   }
 
   return (
@@ -58,18 +61,24 @@ export function Conteudos() {
         setCategory={handleCategorySelect}
       />
       <ContainerCard>
-        {loading ? (
-          <FooterList load={loading} />
+        {loadingShimmer ? (
+          <>
+            <Shimmer />
+            <Shimmer />
+          </>
         ) : (
           <FlatList
             data={news}
             style={{marginBottom: 65}}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => (
-              <CardNews
-                title={item.title.rendered}
-                urlImage={item._embedded['wp:featuredmedia'][0].source_url}
-              />
+              <>
+                <CardNews
+                  key={item.id}
+                  title={item.title.rendered}
+                  urlImage={item._embedded['wp:featuredmedia'][0].source_url}
+                />
+              </>
             )}
             onEndReached={loadApi}
             onEndReachedThreshold={0.1}

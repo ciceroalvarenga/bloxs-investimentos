@@ -5,5 +5,5 @@ export const Container = styled.View`
   flex-direction: row;
 `;
 export const StyledIcon = styled(Icon)`
-  margin-right: 20px;
+  margin-right: 15px;
 `;
